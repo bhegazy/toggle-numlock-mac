@@ -29,17 +29,17 @@ SUCCESS
 
 You should notice the light on the keyboard changing when you run the script and should be able to confirm that the behavior of the number keys changes as well.
 
-If the above script doesn't work, confirm that your keybaord is actually listed:
+If the above script doesn't work, confirm that your keyboard is actually listed:
 ```bash
 $ setleds -v
 ```
 
 If the name is different than "MasterKeys*", then change that in the script to be sure that it works before the next step.
 
-Once you the script is working as expected, you will probably want to bind the the toggling to the actual numlock key. To do this, I used a tool called Spark, found here:
+Once the script is working as expected, you will probably want to bind the toggling to the actual numlock key. To do this, I used a tool called Spark, found here:
 https://www.shadowlab.org/softwares/spark.php
 
-Download and put in your Applications directory. Open it and add an Applescript shortcut. Press the numlock key for the shortcut and put the following Applescript:
+Download and put in your /Applications directory. Open it and add an Applescript shortcut. Press the numlock key for the shortcut and put the following Applescript:
 
 ```
 set keyboardNameWildcard to "MasterKeys*"
