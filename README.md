@@ -1,25 +1,63 @@
-# SetLEDs for Mac OS X
+# Toggle Numlock for Mac OS X
 
-This command-line tool lets you set your keyboard LEDs. This is especially useful if you have a back-lit keyboard and don't want scroll lock, number lock or caps lock to remain unlit.
+Forked from https://github.com/chaimpeck/setledsmac and based on the advice of @gilsonolegario, this tool will let you toggle the numlock key on the CoolerMaster MasterKeys Pro M keyboard. It might work for other MasterKeys keyboards as well as other brands. I have not tested it on any keybaord other than the one that I am typing on right now.
 
-## Note
-Setting the LED on or off does not affect the behavior of that key so even though the led for caps lock will be on caps lock itself will still be off. Tapping the key will cause the lock to come on but the LED will already be on so it will not appear to change. Tapping it again will turn it off (and cause the LED to turn off).
+Follow the setup to get this working with the actual numlock key on your keyboard.
 
-## Usage
-You can set LEDs by simply specifing either a - to turn an LED off, a + to turn an LED on or a ^ to toggle an LED followed by either the word scroll (for scroll lock), num (for numeric lock) or caps (for caps lock). e.g.
+## Setup
 
+Run setup:
 ```bash
-setleds -caps +scroll ^num
+$ ./setup.sh
 ```
 
-### Name matching
-By default setledsmac will set the modifiers for all keyboards attached to your Mac. If you wish to limit it you can use the -name parameter followed by a wildcard. Note that if you want to use a space then specify the wildcard in quotes, e.g.
-
+This will build the setleds tool and move it into `/usr/local/bin`. If you are having trouble building it or do not want to build it, you can alternatively move the included setled file:
 ```bash
-setleds +scroll -name "Apple Key*"
+$ mv bin/setleds /usr/local/bin
 ```
 
-### Verbose mode
-setledsmac will report what keys it changed for each keyboard. This is sometimes different per keyboard if either the keyboard does not have that modifier (e.g. Apple keyboards do not have scroll lock) or if the keyboard already had that LED on.
+You should now be able to toggle the LEDs with the included `toggle.sh` script:
+```bash
+$ ./toggle.sh
+Turning on numlock
+SUCCESS
 
-Specifying -v on the command line will cause setledsmac to report the state of the other unchanged modifier keys on that keyboard too. Note that you will not see the state of modifiers that keyboard does not have.
+$ ./toggle.sh
+Turning off numlock
+SUCCESS
+```
+
+You should notice the light on the keyboard changing when you run the script and should be able to confirm that the behavior of the number keys changes as well.
+
+If the above script doesn't work, confirm that your keybaord is actually listed:
+```bash
+$ setleds -v
+```
+
+If the name is different than "MasterKeys*", then change that in the script to be sure that it works before the next step.
+
+Once you the script is working as expected, you will probably want to bind the the toggling to the actual numlock key. To do this, I used a tool called Spark, found here:
+https://www.shadowlab.org/softwares/spark.php
+
+Download and put in your Applications directory. Open it and add an Applescript shortcut. Press the numlock key for the shortcut and put the following Applescript:
+
+```
+set keyboardNameWildcard to "MasterKeys*"
+set setledsScript to "/usr/local/bin/setleds -name \"" & keyboardNameWildcard & "\""
+
+set currLeds to do shell script setledsScript & " -v"
+
+if currLeds contains "+num" then
+do shell script setledsScript & " -num"
+else
+do shell script setledsScript & " +num"
+end if
+```
+If necessary, change the `keyboardNameWildcard` to whatever the correct name for your keyboard is.
+
+Create the hotkey and try it out. You should now have a working numlock key.
+
+---
+
+Please see here for usage of the setleds command-line tool:
+https://github.com/chaimpeck/setledsmac
