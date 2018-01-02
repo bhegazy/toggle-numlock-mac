@@ -13,7 +13,7 @@ $ ./setup.sh
 
 This will build the setleds tool and move it into `/usr/local/bin`. If you are having trouble building it or do not want to build it, you can alternatively move the included setled file:
 ```bash
-$ mv bin/setleds /usr/local/bin
+$ cp -p bin/setleds /usr/local/bin
 ```
 
 You should now be able to toggle the LEDs with the included `toggle.sh` script:
