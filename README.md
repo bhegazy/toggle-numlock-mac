@@ -57,6 +57,9 @@ If necessary, change the `keyboardNameWildcard` to whatever the correct name for
 
 [[https://github.com/chaimpeck/toggle-numlock-mac/blob/master/setup-screenshot.png|alt=setup-screenshot]]
 
+![setup-screenshot](https://github.com/chaimpeck/toggle-numlock-mac/blob/master/setup-screenshot.png "Spark Setup Screenshot")
+
+
 Create the hotkey and try it out. You should now have a working numlock key.
 
 ---
