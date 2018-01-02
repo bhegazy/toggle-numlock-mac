@@ -1,6 +1,6 @@
 # Toggle Numlock for Mac OS X
 
-Forked from https://github.com/chaimpeck/setledsmac and based on the advice of @gilsonolegario, this tool will let you toggle the numlock key on the CoolerMaster MasterKeys Pro M keyboard. It might work for other MasterKeys keyboards as well as other brands. I have not tested it on any keybaord other than the one that I am typing on right now.
+Forked from https://github.com/damieng/setledsmac and based on the advice of @gilsonolegario, this tool will let you toggle the numlock key on the CoolerMaster MasterKeys Pro M keyboard. It might work for other MasterKeys keyboards as well as other brands. I have not tested it on any keybaord other than the one that I am typing on right now.
 
 Follow the setup to get this working with the actual numlock key on your keyboard.
 
@@ -63,4 +63,4 @@ Create the hotkey and try it out. You should now have a working numlock key.
 ---
 
 Please see here for usage of the setleds command-line tool:
-https://github.com/chaimpeck/setledsmac
+https://github.com/damieng/setledsmac
