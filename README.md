@@ -53,7 +53,7 @@ else
 do shell script setledsScript & " +num"
 end if
 ```
-If necessary, change the `keyboardNameWildcard` to whatever the correct name for your keyboard is.
+If necessary, change the `keyboardNameWildcard` to whatever the correct name for your keyboard is. (The above applescript is included in the file `toggle-numlock.scpt`)
 
 Create the hotkey and try it out. You should now have a working numlock key.
 
